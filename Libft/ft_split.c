@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 12:42:24 by jihyukim          #+#    #+#             */
-/*   Updated: 2021/12/13 19:51:36 by jihyukim         ###   ########.fr       */
+/*   Updated: 2021/12/13 20:07:34 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,56 +47,45 @@ static void	ft_split_free(char **ret)
 	ret = 0;
 }
 
-static char	*ft_split_substr(char **ret, char const *s, size_t *start, char c)
+static char	*ft_split_substr(char **ret, char const *s, size_t start, char c)
 {
-	char	*arr;
-	size_t	i;
 	size_t	len;
+	char	*arr;
 
 	len = 0;
 	while (*(s + len) != c && *(s + len))
 		len++;
-	arr = (char *)malloc(sizeof(char) * len + 1);
-	if (!ret)
-	{
+	arr = ft_substr(s, start, len);
+	if (!arr)
 		ft_split_free(ret);
-		return (0);
-	}
-	i = 0;
-	while (*(s + *start + i) && i < len)
-	{
-		*(arr + i) = *(s + *start * i);
-		i++;
-	}
-	*(arr + i) = 0;
 	return (arr);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	size_t	i;
-	size_t	count;
+	size_t	j;
 	char	**ret;
 
 	if (!s)
 		return (0);
-	count = str_count(s, c);
-	ret = (char **)malloc(sizeof(char *) * (count + 1));
+	ret = (char **)malloc(sizeof(char *) * (str_count(s, c) + 1));
 	if (!ret)
 		return (0);
 	i = 0;
+	j = 0;
 	while (*(s + i))
 	{
 		if (*(s + i) != c)
 		{
-			*ret = ft_split_substr(ret, s, &i, c);
-			if (!(*ret))
+			*(ret + j) = ft_split_substr(ret, s + i, i, c);
+			if (!(*(ret + j++)))
 				return (0);
 		}
 		else
 			i++;
 	}
-	*ret = 0;
+	*(ret + j) = 0;
 	return (ret);
 }
 
