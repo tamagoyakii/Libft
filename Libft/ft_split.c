@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 12:42:24 by jihyukim          #+#    #+#             */
-/*   Updated: 2021/12/13 19:14:07 by jihyukim         ###   ########.fr       */
+/*   Updated: 2021/12/13 19:51:36 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ char	**ft_split(char const *s, char c)
 	{
 		if (*(s + i) != c)
 		{
-			*(ret++) = ft_split_substr(ret, s, &i, c);
+			*ret = ft_split_substr(ret, s, &i, c);
 			if (!(*ret))
 				return (0);
 		}
