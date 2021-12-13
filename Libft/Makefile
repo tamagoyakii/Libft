@@ -6,7 +6,7 @@
 #    By: jihyukim <jihyukim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/17 13:49:00 by jihyukim          #+#    #+#              #
-#    Updated: 2021/12/08 15:09:16 by jihyukim         ###   ########.fr        #
+#    Updated: 2021/12/13 12:43:53 by jihyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,11 @@ SRCS = ft_isalpha.c \
 	   ft_strnstr.c \
 	   ft_atoi.c \
 	   ft_calloc.c \
-	   ft_strdup.c
+	   ft_strdup.c \
+	   ft_substr. \
+	   ft_strjoin.c \
+	   ft_strtrim.c \
+	   ft_split.c 
 
 OBJS = $(SRCS:.c=.o)
 
