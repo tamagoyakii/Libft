@@ -1,3 +1,3 @@
 # 42cursus
 
-private reapsitory
+private repository
