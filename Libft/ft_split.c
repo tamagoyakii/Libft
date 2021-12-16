@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jihyukim <jihyukim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jihyun <jihyun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 12:42:24 by jihyukim          #+#    #+#             */
-/*   Updated: 2021/12/13 20:07:34 by jihyukim         ###   ########.fr       */
+/*   Updated: 2021/12/16 12:37:34 by jihyun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,24 +47,26 @@ static void	ft_split_free(char **ret)
 	ret = 0;
 }
 
-static char	*ft_split_substr(char **ret, char const *s, size_t start, char c)
+static int	ft_split_substr(char **ret, char const *s, int j, char c)
 {
 	size_t	len;
-	char	*arr;
 
 	len = 0;
 	while (*(s + len) != c && *(s + len))
 		len++;
-	arr = ft_substr(s, start, len);
-	if (!arr)
+	*(ret + j) = ft_substr(s, 0, len);
+	if (!(ret + j))
+	{
 		ft_split_free(ret);
-	return (arr);
+		return (0);
+	}
+	return (len + 1);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	i;
-	size_t	j;
+	int		i;
+	int		j;
 	char	**ret;
 
 	if (!s)
@@ -78,28 +80,14 @@ char	**ft_split(char const *s, char c)
 	{
 		if (*(s + i) != c)
 		{
-			*(ret + j) = ft_split_substr(ret, s + i, i, c);
-			if (!(*(ret + j++)))
+			i += ft_split_substr(ret, s + i, j, c);
+			if (!i)
 				return (0);
+			j++;
 		}
 		else
 			i++;
 	}
 	*(ret + j) = 0;
 	return (ret);
-}
-
-#include <stdio.h>
-
-int main(void)
-{
-	char *a = "hello world! my name is jihyukim ahha ";
-	char b = ' ';
-	char **c = ft_split(a, b);
-	while (*c)
-	{
-		printf("%s\n", *c);
-		c++;
-	}
-	return (0);
 }
