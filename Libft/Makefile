@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jihyukim <jihyukim@student.42.fr>          +#+  +:+       +#+         #
+#    By: jihyun <jihyun@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/17 13:49:00 by jihyukim          #+#    #+#              #
-#    Updated: 2021/12/13 12:43:53 by jihyukim         ###   ########.fr        #
+#    Updated: 2021/12/14 16:24:25 by jihyun           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ SRCS = ft_isalpha.c \
 	   ft_atoi.c \
 	   ft_calloc.c \
 	   ft_strdup.c \
-	   ft_substr. \
+	   ft_substr.c \
 	   ft_strjoin.c \
 	   ft_strtrim.c \
 	   ft_split.c 
