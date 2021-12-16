@@ -6,7 +6,7 @@
 /*   By: jihyun <jihyun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 12:42:24 by jihyukim          #+#    #+#             */
-/*   Updated: 2021/12/16 12:37:34 by jihyun           ###   ########.fr       */
+/*   Updated: 2021/12/16 13:43:46 by jihyun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	str_count(char const *s, char c)
 	return (count);
 }
 
-static void	ft_split_free(char **ret)
+static void	ret_free(char **ret)
 {
 	size_t	i;
 
@@ -47,7 +47,7 @@ static void	ft_split_free(char **ret)
 	ret = 0;
 }
 
-static int	ft_split_substr(char **ret, char const *s, int j, char c)
+static int	str_copy(char **ret, char const *s, int j, char c)
 {
 	size_t	len;
 
@@ -57,7 +57,7 @@ static int	ft_split_substr(char **ret, char const *s, int j, char c)
 	*(ret + j) = ft_substr(s, 0, len);
 	if (!(ret + j))
 	{
-		ft_split_free(ret);
+		ret_free(ret);
 		return (0);
 	}
 	return (len + 1);
@@ -80,7 +80,7 @@ char	**ft_split(char const *s, char c)
 	{
 		if (*(s + i) != c)
 		{
-			i += ft_split_substr(ret, s + i, j, c);
+			i += str_copy(ret, s + i, j, c);
 			if (!i)
 				return (0);
 			j++;
