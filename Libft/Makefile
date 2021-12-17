@@ -6,7 +6,7 @@
 #    By: jihyun <jihyun@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/17 13:49:00 by jihyukim          #+#    #+#              #
-#    Updated: 2021/12/14 16:24:25 by jihyun           ###   ########.fr        #
+#    Updated: 2021/12/16 16:55:41 by jihyun           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,15 @@ SRCS = ft_isalpha.c \
 	   ft_substr.c \
 	   ft_strjoin.c \
 	   ft_strtrim.c \
-	   ft_split.c 
+	   ft_split.c \
+	   ft_itoa.c \
+	   ft_strmapi.c \
+	   ft_striteri.c \
+	   ft_putchar_fd.c \
+	   ft_putstr_fd.c \
+	   ft_putendl_fd.c \
+	   ft_putnbr_fd.c
+	   
 
 OBJS = $(SRCS:.c=.o)
 
