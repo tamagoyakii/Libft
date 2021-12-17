@@ -6,7 +6,7 @@
 /*   By: jihyun <jihyun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 16:55:32 by jihyun            #+#    #+#             */
-/*   Updated: 2021/12/17 12:40:09 by jihyun           ###   ########.fr       */
+/*   Updated: 2021/12/17 12:45:52 by jihyun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ static void	write_nbr(long long n, int fd)
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char		a;
 	long long	m;
 
 	m = n;
