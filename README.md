@@ -1,3 +1,0 @@
-# 42cursus
-
-private repository
