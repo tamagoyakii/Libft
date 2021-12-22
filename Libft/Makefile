@@ -6,7 +6,7 @@
 #    By: jihyun <jihyun@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/17 13:49:00 by jihyukim          #+#    #+#              #
-#    Updated: 2021/12/16 16:55:41 by jihyun           ###   ########.fr        #
+#    Updated: 2021/12/22 14:58:50 by jihyun           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,9 +47,26 @@ SRCS = ft_isalpha.c \
 	   ft_putstr_fd.c \
 	   ft_putendl_fd.c \
 	   ft_putnbr_fd.c
-	   
+
+BONUS_SRCS = ft_lstnew.c \
+			 ft_lstadd_front.c \
+			 ft_lstsize.c \
+			 ft_lstlast.c \
+			 ft_lstadd_back.c \
+			 ft_lstdelone.c \
+			 ft_lstclear.c \
+			 ft_lstite.c \
+			 ft_lstmap.c
 
 OBJS = $(SRCS:.c=.o)
+
+BOBUS_OBJS = $(BONUS_SRCS:.c=.o)
+
+ifndef	INCLUDE_BONUS
+		OBJS_IN_USE = $(OBJS) $(BOBUS_OBJS)
+else
+		OBJS_IN_USE = $(OBJS)
+endif
 
 all: 		$(NAME)
 
@@ -68,4 +85,6 @@ fclean: 	clean
 
 re: 		fclean all
 
-.PHONY:		all clean fclean re
+bonus:		$(MAKE) INCLUDE_BONUS=1 all
+
+.PHONY:		all clean fclean re bonus
