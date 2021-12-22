@@ -6,7 +6,7 @@
 /*   By: jihyun <jihyun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 13:11:37 by jihyun            #+#    #+#             */
-/*   Updated: 2021/12/17 13:23:35 by jihyun           ###   ########.fr       */
+/*   Updated: 2021/12/22 15:06:13 by jihyun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (lst)
-	{
-		if (*lst)
-			new->next = *lst;
-		*lst = new;
-	}
+	if (!lst)
+		return ;
+	if (*lst)
+		new->next = *lst;
+	*lst = new;
 }
