@@ -6,7 +6,7 @@
 #    By: jihyun <jihyun@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/17 13:49:00 by jihyukim          #+#    #+#              #
-#    Updated: 2021/12/22 14:58:50 by jihyun           ###   ########.fr        #
+#    Updated: 2021/12/27 15:09:47 by jihyun           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,6 +85,6 @@ fclean: 	clean
 
 re: 		fclean all
 
-bonus:		$(MAKE) INCLUDE_BONUS=1 all
+bonus:		INCLUDE_BONUS=1 all
 
 .PHONY:		all clean fclean re bonus
