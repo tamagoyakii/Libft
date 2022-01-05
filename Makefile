@@ -6,7 +6,7 @@
 #    By: jihyun <jihyun@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/17 13:49:00 by jihyukim          #+#    #+#              #
-#    Updated: 2021/12/27 15:09:47 by jihyun           ###   ########.fr        #
+#    Updated: 2022/01/05 14:34:33 by jihyun           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,15 +60,15 @@ BONUS_SRCS = ft_lstnew.c \
 
 OBJS = $(SRCS:.c=.o)
 
-BOBUS_OBJS = $(BONUS_SRCS:.c=.o)
+BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 ifndef	INCLUDE_BONUS
-		OBJS_IN_USE = $(OBJS) $(BOBUS_OBJS)
+		OBJS_IN_USE = $(OBJS) $(BONUS_OBJS)
 else
 		OBJS_IN_USE = $(OBJS)
 endif
 
-all: 		$(NAME)
+all: 		bonus $(NAME)
 
 .c.o:
 			$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
@@ -78,13 +78,40 @@ $(NAME): 	$(OBJS)
 			ranlib $(NAME);
 
 clean:
-			rm -f $(OBJS)
+			rm -f $(OBJS) $(BONUS_OBJS)
 
 fclean: 	clean
 			rm -f $(NAME)
 
 re: 		fclean all
 
-bonus:		INCLUDE_BONUS=1 all
+bonus:		$(MAKE) INCLUDE_BONUS=1 $(NAME)
 
+.PHONY:		all clean fclean re bonus
+
+
+OBJS			= ${addprefix ${SRCS_DIR}, ${SRCNAME:.c=.o}}
+OBJS_BONUS		= ${addprefix ${SRCS_DIR}, ${SRCNAME_BONUS:.c=.o}}
+NAME			= libft.a
+CC			= gcc
+RM			= rm -f
+CFLAGS			= -Wall -Wextra -Werror
+INCLUDES 		= ./libft.h
+ifdef BONUS_Part
+		OBJ_SWITCH = $(OBJS_BONUS)
+else
+		OBJ_SWITCH = $(OBJS)
+endif
+.c.o:
+			${CC} ${CFLAGS} -c  -o  $@ $<
+${NAME}:		${OBJ_SWITCH}
+			ar cru ${NAME} ${OBJ_SWITCH} $@ $^
+all:			bonus ${NAME}
+clean:
+			${RM} ${OBJS} ${OBJS_BONUS}
+fclean:			clean
+			${RM} ${NAME}
+re:			fclean all
+bonus:
+			$(MAKE) BONUS_Part=1 $(NAME)
 .PHONY:		all clean fclean re bonus

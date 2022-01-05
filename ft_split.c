@@ -6,7 +6,7 @@
 /*   By: jihyun <jihyun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 12:42:24 by jihyukim          #+#    #+#             */
-/*   Updated: 2021/12/16 13:43:46 by jihyun           ###   ########.fr       */
+/*   Updated: 2022/01/05 14:07:25 by jihyun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	str_count(char const *s, char c)
 {
-	int	i;
-	int	count;
+	size_t	i;
+	size_t	count;
 
 	count = 0;
 	i = 0;
@@ -26,19 +26,19 @@ static int	str_count(char const *s, char c)
 		else
 		{
 			count++;
-			while (*(s + i) != c)
+			while (*(s + i) != c && *(s + i))
 				i++;
 		}
 	}
 	return (count);
 }
 
-static void	ret_free(char **ret)
+static void	ret_free(char **ret, size_t j)
 {
 	size_t	i;
 
 	i = 0;
-	while (*(ret + i))
+	while (i < j)
 	{
 		free(*(ret + i));
 		i++;
@@ -47,7 +47,7 @@ static void	ret_free(char **ret)
 	ret = 0;
 }
 
-static int	str_copy(char **ret, char const *s, int j, char c)
+static int	str_copy(char **ret, char const *s, size_t j, char c)
 {
 	size_t	len;
 
@@ -57,7 +57,7 @@ static int	str_copy(char **ret, char const *s, int j, char c)
 	*(ret + j) = ft_substr(s, 0, len);
 	if (!(ret + j))
 	{
-		ret_free(ret);
+		ret_free(ret, j);
 		return (0);
 	}
 	return (len + 1);
@@ -65,11 +65,11 @@ static int	str_copy(char **ret, char const *s, int j, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	int		i;
-	int		j;
+	size_t 	i;
+	size_t 	j;
 	char	**ret;
 
-	if (!s)
+	if (!s || !c)
 		return (0);
 	ret = (char **)malloc(sizeof(char *) * (str_count(s, c) + 1));
 	if (!ret)
