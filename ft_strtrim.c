@@ -6,7 +6,7 @@
 /*   By: jihyun <jihyun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 18:35:36 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/01/05 15:39:16 by jihyun           ###   ########.fr       */
+/*   Updated: 2022/01/06 15:49:34 by jihyun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 		end --;
 	if (start == end)
 		return (ft_strdup(""));
-	ret = (char *)malloc(sizeof(char) * (end - start + 2));
-	if (!ret)
-		return (0);
-	ft_strlcpy(ret, s1 + start, end - start + 2);
+	ret = ft_substr(s1, start, end - start + 1);
 	return (ret);
 }
