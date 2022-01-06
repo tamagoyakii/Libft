@@ -6,7 +6,7 @@
 /*   By: jihyun <jihyun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 21:09:41 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/01/05 15:33:12 by jihyun           ###   ########.fr       */
+/*   Updated: 2022/01/06 20:42:07 by jihyun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,6 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		}
 	}
 	else
-	{
-		i = 0;
-		while (i < len)
-		{
-			*(unsigned char *)(dst + i) = *(const unsigned char *)(src + i);
-			i++;
-		}
-	}
+		dst = ft_memcpy(dst, src, len);
 	return (dst);
 }

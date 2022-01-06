@@ -6,7 +6,7 @@
 /*   By: jihyun <jihyun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 14:31:17 by jihyun            #+#    #+#             */
-/*   Updated: 2022/01/06 18:08:08 by jihyun           ###   ########.fr       */
+/*   Updated: 2022/01/06 18:35:16 by jihyun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 
 	if (!lst || !f)
 		return (0);
+	ret = 0;
 	while (lst)
 	{
 		tmp = ft_lstnew((*f)(lst->content));
