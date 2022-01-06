@@ -6,7 +6,7 @@
 #    By: jihyun <jihyun@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/17 13:49:00 by jihyukim          #+#    #+#              #
-#    Updated: 2022/01/05 14:42:47 by jihyun           ###   ########.fr        #
+#    Updated: 2022/01/06 17:55:15 by jihyun           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ SRCS_BONUS = ft_lstnew.c \
 			 ft_lstadd_back.c \
 			 ft_lstdelone.c \
 			 ft_lstclear.c \
-			 ft_lstite.c \
+			 ft_lstiter.c \
 			 ft_lstmap.c
 
 OBJS		= $(SRCS:.c=.o)
