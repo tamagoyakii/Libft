@@ -6,7 +6,7 @@
 /*   By: jihyun <jihyun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 16:00:16 by jihyun            #+#    #+#             */
-/*   Updated: 2021/12/16 16:14:48 by jihyun           ###   ########.fr       */
+/*   Updated: 2022/01/05 15:36:27 by jihyun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	unsigned int	i;
 
+    if (!s)
+        return ;
 	i = 0;
 	while (*(s + i))
 	{

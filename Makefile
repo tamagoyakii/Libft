@@ -6,7 +6,7 @@
 #    By: jihyun <jihyun@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/17 13:49:00 by jihyukim          #+#    #+#              #
-#    Updated: 2022/01/05 14:34:33 by jihyun           ###   ########.fr        #
+#    Updated: 2022/01/05 14:42:47 by jihyun           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ SRCS = ft_isalpha.c \
 	   ft_putendl_fd.c \
 	   ft_putnbr_fd.c
 
-BONUS_SRCS = ft_lstnew.c \
+SRCS_BONUS = ft_lstnew.c \
 			 ft_lstadd_front.c \
 			 ft_lstsize.c \
 			 ft_lstlast.c \
@@ -58,60 +58,35 @@ BONUS_SRCS = ft_lstnew.c \
 			 ft_lstite.c \
 			 ft_lstmap.c
 
-OBJS = $(SRCS:.c=.o)
+OBJS		= $(SRCS:.c=.o)
 
-BONUS_OBJS = $(BONUS_SRCS:.c=.o)
+OBJS_BONUS	= $(SRCS_BONUS:.c=.o)
 
-ifndef	INCLUDE_BONUS
-		OBJS_IN_USE = $(OBJS) $(BONUS_OBJS)
+ifdef	WITH_BONUS
+		A_OBJS = $(OBJS) $(OBJS_BONUS)
 else
-		OBJS_IN_USE = $(OBJS)
+		A_OBJS = $(OBJS)
 endif
 
-all: 		bonus $(NAME)
+all : $(NAME)
 
-.c.o:
-			$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+%.o : %.c $(INCLUDES)
+	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): 	$(OBJS)
-			ar cr $(NAME) $(OBJS);
-			ranlib $(NAME);
+$(NAME) : $(A_OBJS)
+	$(AR) $(ARFLAGS) $@ $^
 
-clean:
-			rm -f $(OBJS) $(BONUS_OBJS)
+clean :
+	$(RM) $(RMFLAGS) $(OBJS) $(OBJS_BONUS)
 
-fclean: 	clean
-			rm -f $(NAME)
+fclean : clean
+	$(RM) $(RMFLAGS) $(NAME)
 
-re: 		fclean all
+re:
+	$(MAKE) fclean
+	$(MAKE) all
 
-bonus:		$(MAKE) INCLUDE_BONUS=1 $(NAME)
+bonus :
+	$(MAKE) WITH_BONUS=1 all
 
-.PHONY:		all clean fclean re bonus
-
-
-OBJS			= ${addprefix ${SRCS_DIR}, ${SRCNAME:.c=.o}}
-OBJS_BONUS		= ${addprefix ${SRCS_DIR}, ${SRCNAME_BONUS:.c=.o}}
-NAME			= libft.a
-CC			= gcc
-RM			= rm -f
-CFLAGS			= -Wall -Wextra -Werror
-INCLUDES 		= ./libft.h
-ifdef BONUS_Part
-		OBJ_SWITCH = $(OBJS_BONUS)
-else
-		OBJ_SWITCH = $(OBJS)
-endif
-.c.o:
-			${CC} ${CFLAGS} -c  -o  $@ $<
-${NAME}:		${OBJ_SWITCH}
-			ar cru ${NAME} ${OBJ_SWITCH} $@ $^
-all:			bonus ${NAME}
-clean:
-			${RM} ${OBJS} ${OBJS_BONUS}
-fclean:			clean
-			${RM} ${NAME}
-re:			fclean all
-bonus:
-			$(MAKE) BONUS_Part=1 $(NAME)
-.PHONY:		all clean fclean re bonus
+.PHONY : all clean fclean re bonus
