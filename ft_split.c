@@ -6,12 +6,11 @@
 /*   By: jihyun <jihyun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 12:42:24 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/01/05 15:28:14 by jihyun           ###   ########.fr       */
+/*   Updated: 2022/01/12 14:33:13 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
 
 static int	str_count(char const *s, char c)
 {
@@ -66,8 +65,8 @@ static int	str_copy(char **ret, char const *si, size_t j, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	size_t 	i;
-	size_t 	j;
+	size_t	i;
+	size_t	j;
 	char	**ret;
 
 	if (!s)

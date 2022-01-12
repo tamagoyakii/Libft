@@ -6,7 +6,7 @@
 /*   By: jihyun <jihyun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 18:35:36 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/01/06 15:49:34 by jihyun           ###   ########.fr       */
+/*   Updated: 2022/01/12 15:00:31 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	end;
 	char	*ret;
 
+	if (!s1 && !set)
+		return (0);
 	if (!set)
 		return (ft_strdup(s1));
 	if (!s1)

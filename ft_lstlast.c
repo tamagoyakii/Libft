@@ -6,7 +6,7 @@
 /*   By: jihyun <jihyun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 13:37:40 by jihyun            #+#    #+#             */
-/*   Updated: 2022/01/06 17:50:26 by jihyun           ###   ########.fr       */
+/*   Updated: 2022/01/12 14:32:21 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_list	*ft_lstlast(t_list *lst)
 {
 	if (!lst)
 		return (0);
-	while(lst->next)
+	while (lst->next)
 		lst = lst->next;
 	return (lst);
 }
