@@ -6,13 +6,23 @@
 #    By: jihyun <jihyun@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/17 13:49:00 by jihyukim          #+#    #+#              #
-#    Updated: 2022/01/06 18:32:03 by jihyun           ###   ########.fr        #
+#    Updated: 2022/01/13 15:03:53 by jihyun           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I ./includes/
-NAME = libft.a
+NAME		= libft.a
+
+CC			= gcc
+CFLAGS		= -Wall -Wextra -Werror
+
+AR			= ar
+ARFLAGS		= rcs
+
+RM			= rm
+RMFLAGS		= -f
+
+INCLUDES	= ./libft.h
+
 SRCS = ft_isalpha.c \
 	   ft_isdigit.c \
 	   ft_isalnum.c \
